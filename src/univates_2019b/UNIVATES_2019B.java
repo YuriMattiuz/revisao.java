@@ -5,57 +5,70 @@ package univates_2019b;
  * @author yuri.mattiuz
  */
 public class UNIVATES_2019B {
-    public static void main(String[] args){
     
-        soma(2,3);
-        subtrai(3,3);
-        
-        String var1 = "Juca";
-        String var2 = "Juca";
-        
-        if(2 == 3){
-            System.out.println("2 não é igual a 2");
-        }else{
-            System.out.println("2 é igual a 3");
-        }
-        
-        // 3 laços de repetição
-        for(int i = 0; i <= 10; i++){
-           System.out.println("Valor de i =" + i);        
-        }
-        
-        int i = 0;
-        while(i <10){
-            System.out.println(i + "i menor que 10");
-            i += 1;
-        }
-      
-         do{
-            System.out.println("Infinito");
-        }while(i < 18);
-        {
-        
-        //tipos de variaveis
-        boolean n1 = false;
-        int n2 = 10;
-        float n3 = 5.4546f;
-        System.out.println(n3);
-        double n4 = 5.41;
-        System.out.println(n4);
-        String n5 = "Juca Bala";
-        System.out.println(n5.trim()); // remove os espaços
-            
-        }
-    }   
-        
-    public static void soma(int var1, int var2) {
-        int result = var1 + var2;
-        System.out.println("Resultado= "  + result);
     
+    
+    
+    //método de inicialização da classe
+    public static void main(String[] args) {
+        
+        System.out.println("Olá Mundo");
+        int resultado = Funcoes.somarNumeros(1, 2);
+        System.out.println("Resultado = " + resultado);
+        
+        //criamos uma instância de Funcoes
+        Funcoes func = new Funcoes();
+        resultado = func.subtrairNumeros(4, 1);
+        System.out.println("Resultado = " + resultado);
+        
+        imprimirMensagem("TESTE 1");
+        imprimirMensagem("TESTE 2");
+        imprimirMensagem("TESTE 3");
+        
+        for(int i = 0; i <10; i++){
+            System.out.println("valor de i = " + i);
+        }
+        
+        int x = 15;
+        while( x < 18 ){
+            System.out.println("Sem permissão!!!");
+            x++;
+        }
+        
+        int[] numeros = {1,2,3};
+        System.out.println("ENCHANCED FOR");
+        for(int var : numeros){
+            System.out.println(var);
+        }
+        
+        System.out.println("FOR COMUM");
+        for(int var = 0; var < numeros.length; var++){
+            System.out.println(numeros[var]);
+        }
+        
+        int[] numeros_array = {2,2,1};
+        int res_soma = Funcoes.somarNumeros(numeros_array);
+        System.out.println("RESULTADO DA SOMA = " + res_soma);
+        
+        int res_mul = Funcoes.multiplicaNumeros(numeros_array);
+        System.out.println("RESULTADO DA MULTIPLICAÇÃO = " + res_mul);
+        
+        double res_div = Funcoes.divideNumeros(numeros_array);
+        System.out.println("RESULTADO DA DIVISAO = " + res_div);
+        
+        int res_sub = Funcoes.subtraiNumeros(numeros_array);
+        System.out.println("RESULTADO DA SUBTRACAO = " + res_sub);
+        
+        System.out.println();//linha em branco
+        System.out.println();//linha em branco
+        System.out.println();//linha em branco
+        String sorteio = Funcoes.sortearNumeros(6, 60);
+        System.out.println("SORTEIO = " + sorteio);
+        
     }
     
-    public static void subtrai(int num1, int num2){
-        int result = num1 - num2;
-        System.out.println("Resultado= " + result);
+    public static void imprimirMensagem(String par1){
+        System.out.println();
     }
+    
 }
