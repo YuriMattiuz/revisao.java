@@ -1,6 +1,8 @@
 
 package univates_2019b;
 
+import java.util.Random;
+
 
 /*
 autor: Yuri Mattiuz
@@ -8,7 +10,6 @@ autor: Yuri Mattiuz
 
 public class Funcoes {
     
-    //método que soma 2 números
     /*
         modificador de acesso (public, private)
         public = torna o método disponível para todo o projeto
@@ -63,8 +64,10 @@ public class Funcoes {
     public static String sortearNumeros(int quantidade, int maximo){
         String resultado = "";
         int numero = 0;
+        Random aleatorio = new Random();
         for(int i = 0; i < quantidade; i++){
-            numero = (int) (Math.random() * maximo) + 1;
+            //numero = (int) (Math.random() * maximo) + 1;
+            numero = aleatorio.nextInt(maximo) + 1;
             resultado += numero + ",";
         }
         

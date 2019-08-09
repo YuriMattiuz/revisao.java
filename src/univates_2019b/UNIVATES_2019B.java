@@ -12,6 +12,27 @@ public class UNIVATES_2019B {
     //método de inicialização da classe
     public static void main(String[] args) {
         
+        Pessoa pessoa1 = new Pessoa();
+        Pessoa pessoa2 = new Pessoa();
+        
+        pessoa1.setCodigo(1);
+        pessoa1.setNome("Juca");
+        pessoa1.setValorConta(500);
+        
+        pessoa2.setCodigo(2);
+        pessoa2.setNome("João");
+        
+        System.out.println(pessoa1);
+        System.out.println(pessoa2);
+        
+        /* Definir um valorConta para cada pessoa.
+           Criar um método dentro da classe Pessoa que diminui e um que aumenta
+           o valor da conta.
+        Ex: Transferir parte do valor de uma conta para a outra
+        Ao final, imprimir o saldo das duas pessoas
+        PLUS: Validar se a pessoa tem saldo para essa transferencia
+        */
+        
         System.out.println("Olá Mundo");
         int resultado = Funcoes.somarNumeros(1, 2);
         System.out.println("Resultado = " + resultado);
@@ -46,7 +67,7 @@ public class UNIVATES_2019B {
             System.out.println(numeros[var]);
         }
         
-        int[] numeros_array = {2,2,1};
+        int[] numeros_array = {2,2,3,4,45,555};
         int res_soma = Funcoes.somarNumeros(numeros_array);
         System.out.println("RESULTADO DA SOMA = " + res_soma);
         
@@ -68,7 +89,7 @@ public class UNIVATES_2019B {
     }
     
     public static void imprimirMensagem(String par1){
-        System.out.println();
+        System.out.println(par1);
     }
     
 }
