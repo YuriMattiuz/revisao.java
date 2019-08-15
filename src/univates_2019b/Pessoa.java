@@ -7,10 +7,10 @@ package univates_2019b;
 
 /**
  *
- * @author yuri.mattiuz
+ * @author jonasdhein
  */
 public class Pessoa {
-
+    
     private int codigo;
     private String nome;
     private String endereco;
@@ -56,10 +56,12 @@ public class Pessoa {
     public void setValorConta(double valorConta) {
         this.valorConta = valorConta;
     }
-
+    
+    
+    
     @Override
-    public String toString() {
-        return "Nome: " + this.nome + "\nSaldo: " + 0;
-
+    public String toString(){
+        return "Nome: " + this.nome + "\nSaldo: " + this.valorConta;
+    }
     
 }

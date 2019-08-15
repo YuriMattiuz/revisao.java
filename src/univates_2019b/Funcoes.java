@@ -1,11 +1,10 @@
-
 package univates_2019b;
+
 
 import java.util.Random;
 
-
 /*
-autor: Yuri Mattiuz
+autor: Jonas Dhein
 */
 
 public class Funcoes {

@@ -3,12 +3,15 @@ package univates_2019b;
 /**
  *
  * @author yuri.mattiuz
- */
+
+
+    /import java.util.Random;
+
+/*
+*/
+
 public class UNIVATES_2019B {
-    
-    
-    
-    
+
     //método de inicialização da classe
     public static void main(String[] args) {
         
