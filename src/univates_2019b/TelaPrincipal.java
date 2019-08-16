@@ -96,7 +96,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblChequeEspecial2.setText("Especial");
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/icons8-close-window-24.png"))); // NOI18N
-        btnSair.setText("Sair");
+        btnSair.setText("Sair222");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
@@ -226,6 +226,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         }catch(Exception ex){
             System.out.println("Erro: " + ex.getMessage());
+        }
       
     }//GEN-LAST:event_btnTransfere1ActionPerformed
 
@@ -242,6 +243,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         }catch(Exception ex){
             System.out.println("Erro: " + ex.getMessage());
+        }
     }//GEN-LAST:event_btnTransfere2ActionPerformed
 
     private void btnImprimir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir1ActionPerformed
