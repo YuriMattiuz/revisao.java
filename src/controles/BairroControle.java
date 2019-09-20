@@ -55,14 +55,14 @@ public class BairroControle {
     
     public boolean alterar(){
         
-        ConnectionFactory.abreConexao();
-        Connection con = ConnectionFactory.getConnection();
+        Conexao.abreConexao();
+        Connection con = Conexao.obterConexao();
         PreparedStatement stmt = null;
         
         try {
             stmt = con.prepareStatement("UPDATE area SET nome=? WHERE id=?");
-            stmt.setString(1, objArea.getNome());
-            stmt.setInt(2, objArea.getId());
+            stmt.setString(1, objBairro.getNome());
+            stmt.setInt(2, objBairro.getId());
             
             stmt.executeUpdate();
             
@@ -72,7 +72,7 @@ public class BairroControle {
             System.out.println(ex.getMessage());
             return false;
         }finally{
-            ConnectionFactory.closeConnection(con, stmt);
+            Conexao.fecharConexao(con, stmt);
         }
         
     }

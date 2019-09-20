@@ -5,6 +5,10 @@
  */
 package Telas;
 
+import controles.BairroControle;
+import ferramentas.CaixaDeDialogo;
+import modelos.Bairro;
+
 /**
  *
  * @author yuri.mattiuz
@@ -110,8 +114,30 @@ public class CadBairros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+       
+       try{
+            //validar os campos
+            if(txtNome.getText().trim().length() == 0){
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Informe um bairro corretamente", 'a');
+                return;
+            }
+            
+            //Preenche o objeto Bairro
+            Bairro objBairro = new Bairro();
+            objBairro.setNome(txtNome.getText());
         
+            //incluir no banco
+            BairroControle objBairroCon = new BairroControle(objBairro, null);
+            boolean wRetorno = objBairroCon.incluir();
+            if(wRetorno == true){
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Sucesso", 'i');
+            }else{
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Ops, não deu certo", 'e');
+            }
+            
+        }catch(Exception ex){
+         
+        }   
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
