@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package banco;
-
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.postgresql.core.ConnectionFactory;
 
 /**
  *
@@ -33,15 +26,15 @@ public class Conexao {
     public static void abreConexao() {
         try {
             
-            Connection con = getConnection();
+            Connection con = obterConexao();
             stmt = con.createStatement();
-            System.out.print("Conex�o com Banco de Dados Criada!");
+            System.out.print("Conexão com Banco de Dados Criada!");
         } catch (Exception ex) {
             System.out.print(ex);
         }
     }
     
-    public static Connection getConnection(){
+    public static Connection obterConexao(){
      
         try {
             Class.forName(DRIVER);
@@ -49,11 +42,11 @@ public class Conexao {
             return DriverManager.getConnection(URL, USER, PASS);
             
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new RuntimeException("Erro na conex�o", ex);
+            throw new RuntimeException("Erro na conexão", ex);
         }
     }
     
-    public static void closeConnection(Connection con){
+    public static void fecharConexao(Connection con){
         try{
             
             if(con != null){
@@ -61,14 +54,14 @@ public class Conexao {
             }
             
         }catch(SQLException ex){
-            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public static void closeConnection(Connection con, PreparedStatement stmt){
+    public static void fecharConexao(Connection con, PreparedStatement stmt){
         
-        //stmt � respons�vel por executar os comandos SQL - DML (Data Manipulation Langage)
-        closeConnection(con);
+        //stmt é responsável por executar os comandos SQL - DML (Data Manipulation Langage)
+        fecharConexao(con);
         
         try{
             
@@ -77,13 +70,13 @@ public class Conexao {
             }
             
         }catch(SQLException ex){
-            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public static void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs){
+    public static void fecharConexao(Connection con, PreparedStatement stmt, ResultSet rs){
         
-        closeConnection(con, stmt);
+        fecharConexao(con, stmt);
         
         try{
             
@@ -92,16 +85,8 @@ public class Conexao {
             }
             
         }catch(SQLException ex){
-            Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Conexao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public static void fecharConexao(Connection con, PreparedStatement stmt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static Connection obterConexao() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

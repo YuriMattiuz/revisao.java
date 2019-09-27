@@ -60,7 +60,7 @@ public class BairroControle {
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("UPDATE area SET nome=? WHERE id=?");
+            stmt = con.prepareStatement("UPDATE bairros SET nome=? WHERE id=?");
             stmt.setString(1, objBairro.getNome());
             stmt.setInt(2, objBairro.getId());
             
@@ -75,6 +75,86 @@ public class BairroControle {
             Conexao.fecharConexao(con, stmt);
         }
         
+    }
+    
+    public void preencher() {
+
+        Conexao.abreConexao();
+        
+        Vector<String> cabecalhos = new Vector<String>();
+        Vector dadosTabela = new Vector(); //receber os dados do banco
+        
+        cabecalhos.add("Código");
+        cabecalhos.add("Nome");
+        
+        ResultSet result = null;
+        
+        try {
+
+            String SQL = "";
+            SQL = " SELECT id, nome ";
+            SQL += " FROM bairros ";
+            SQL += " ORDER BY nome ";
+            
+            result = Conexao.stmt.executeQuery(SQL);
+
+            Vector<Object> linha;
+            while(result.next()) {
+                linha = new Vector<Object>();
+                
+                linha.add(result.getInt(1));
+                linha.add(result.getString(2));
+                
+                dadosTabela.add(linha);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("problemas para popular tabela...");
+            System.out.println(e);
+        }
+
+        jtbBairros.setModel(new DefaultTableModel(dadosTabela, cabecalhos) {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+              return false;
+            }
+            // permite seleção de apenas uma linha da tabela
+        });
+
+        // permite seleção de apenas uma linha da tabela
+        jtbBairros.setSelectionMode(0);
+
+        // redimensiona as colunas de uma tabela
+        TableColumn column = null;
+        for (int i = 0; i < 2; i++) {
+            column = jtbBairros.getColumnModel().getColumn(i);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(80);
+                    break;
+                case 1:
+                    column.setPreferredWidth(200);
+                    break;
+            }
+        }
+        
+        jtbBairros.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
+                super.getTableCellRendererComponent(table, value, isSelected,
+                        hasFocus, row, column);
+                if (row % 2 == 0) {
+                    setBackground(Color.LIGHT_GRAY);
+                } else {
+                    setBackground(Color.WHITE);
+                }
+                return this;
+            }
+        });
+        //return (true);
     }
     
     /*
@@ -172,72 +252,6 @@ public class BairroControle {
         return listagem_areas;
     }
     
-    public void Preencher() {
-        ConnectionFactory.abreConexao();
-        
-        Vector<String> cabecalhos = new Vector<String>();
-        Vector dadosTabela = new Vector();
-        cabecalhos.add("Código");
-        cabecalhos.add("Nome");
-        
-        ResultSet result = null;
-        
-        try {
-            String SQL = "";
-            SQL = " SELECT id, nome ";
-            SQL += " FROM area ";
-            SQL += " WHERE COALESCE(dataExclusao,'') = '' ";
-            SQL += " ORDER BY nome DESC ";
-            
-            result = ConnectionFactory.stmt.executeQuery(SQL);
-            while (result.next()) {
-                Vector<Object> linha = new Vector<Object>();
-                linha.add(result.getInt(1));
-                linha.add(result.getString(2));
-                dadosTabela.add(linha);
-            }
-            
-        } catch (Exception e) {
-            System.out.println("problemas para popular tabela...");
-            System.out.println(e);
-        }
-        jtbAreas.setModel(new DefaultTableModel(dadosTabela, cabecalhos) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-              return false;
-            }
-            // permite seleção de apenas uma linha da tabela
-        });
-        // permite seleção de apenas uma linha da tabela
-        jtbAreas.setSelectionMode(0);
-        // redimensiona as colunas de uma tabela
-        TableColumn column = null;
-        for (int i = 0; i < 3; i++) {
-            column = jtbAreas.getColumnModel().getColumn(i);
-            switch (i) {
-                case 0:
-                    column.setPreferredWidth(80);
-                    break;
-                case 1:
-                    column.setPreferredWidth(200);
-                    break;
-            }
-        }
-        jtbAreas.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-            @Override
-            public Component getTableCellRendererComponent(JTable table, Object value,
-                    boolean isSelected, boolean hasFocus, int row, int column) {
-                super.getTableCellRendererComponent(table, value, isSelected,
-                        hasFocus, row, column);
-                if (row % 2 == 0) {
-                    setBackground(Color.LIGHT_GRAY);
-                } else {
-                    setBackground(Color.WHITE);
-                }
-                return this;
-            }
-        });
-        //return (true);
-    }
+    
     */
 }
