@@ -24,9 +24,5 @@ public class Bairro {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public void setDataExclusao(String format) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }
